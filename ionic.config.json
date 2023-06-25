@@ -1,0 +1,7 @@
+{
+  "name": "SURVEY-APP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
