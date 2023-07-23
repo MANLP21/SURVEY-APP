@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Survey forms</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="surveysList.length!==0; else elseBlock">
+    <ion-card *ngFor="let survey of surveysList; let index">
+      <ion-card-header>
+        <ion-card-title>{{ survey.name }}</ion-card-title>
+        <ion-card-subtitle>{{ survey.birthday }}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{ survey.description }}      
+      </ion-card-content>
+    </ion-card>
+    <ion-infinite-scroll>
+      <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles">
+
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <ng-template #elseBlock>
+    <div class="ion-text-center">
+      <h3>No Surveys !</h3>
+      You  don't have a registered surveys. You  can use the floating button below to add some.
+    </div>
+    
+  </ng-template>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="showSurveyForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Fil the form below</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-item>
+            <ion-label position="stacked">Enter a name</ion-label>
+            <ion-input type="text" placeholder="The name" [(ngModel)]="surveyBeingCreated.name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Enter a birthday</ion-label>
+            <ion-input type="date" placeholder="The birthday" [(ngModel)]="surveyBeingCreated.birthday"></ion-input>
+          </ion-item>
+
+         
+
+          <ion-item>
+            <ion-label position="stacked">Enter a description</ion-label>
+            <ion-textarea type="text" placeholder="The description" [(ngModel)]="surveyBeingCreated.description"></ion-textarea>
+          </ion-item>
+        </ion-content>
+        
+        <ion-footer>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button (click)="save()" [strong]="true">Save</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-footer>
+      </ng-template>
+    </ion-modal>
+</ion-content>

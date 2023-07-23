@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>User Profile</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="profileList.length!==0;">
+    <ion-card *ngFor="let profile of profileList; let index">
+      <ion-card-header>
+        <ion-card-title>{{ profile.name }}</ion-card-title>
+        <ion-card-subtitle>Birthday: {{ profile.birthday }}</ion-card-subtitle>
+        <ion-card-subtitle>Gender: {{ profile.gender }}</ion-card-subtitle>
+        <ion-card-subtitle>Height: {{ profile.height? profile.height : 0 }} cm </ion-card-subtitle>
+        <ion-card-subtitle>Weight: {{ profile.weight ? profile.weight : 0 }} Kg</ion-card-subtitle>
+        <ion-card-subtitle>Email: {{ profile.email }}</ion-card-subtitle>
+        <ion-card-subtitle>Phone Number: {{ profile.phone_number }}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card> 
+  </div>
+  
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="showProfileForm()">
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>My Profile</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-item>
+            <ion-label position="stacked">Enter a name</ion-label>
+            <ion-input type="text" placeholder="The name" [value]="currentProfile.name" [(ngModel)]="currentProfile.name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Enter an email</ion-label>
+            <ion-input type="email" placeholder="The email" [value]="currentProfile.email" [(ngModel)]="currentProfile.email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Enter a phone number</ion-label>
+            <ion-input type="text" placeholder="The phone number" [value]="currentProfile.phone_number" [(ngModel)]="currentProfile.phone_number"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Enter a birthday</ion-label>
+            <ion-input type="date" placeholder="The birthday" [value]="currentProfile.birthday" [(ngModel)]="currentProfile.birthday"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Select a gender:</ion-label>
+            <ion-select [(ngModel)]="currentProfile.gender">
+              <ion-select-option value="male">Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">The height (cm)</ion-label>
+            <ion-input type="number" placeholder="180" [value]="currentProfile.height" [(ngModel)]="currentProfile.height"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">The weight (kg)</ion-label>
+            <ion-input type="number" placeholder="67" [(ngModel)]="currentProfile.weight"></ion-input>
+          </ion-item>
+
+          
+        </ion-content>
+        
+        <ion-footer>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button (click)="save()" [strong]="true">Save</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-footer>
+      </ng-template>
+    </ion-modal>
+</ion-content>
+
