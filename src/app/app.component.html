@@ -3,8 +3,14 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Menu</ion-list-header>
-          <ion-note>Click on an item</ion-note>
+          <div class="ion-text-center">
+            <ion-img class="logo"
+            src="../assets/icon/logo.png"
+            alt="Logo"
+          ></ion-img>
+          </div>
+          <!--<ion-list-header>Menu</ion-list-header>
+          <ion-note>Click on an item</ion-note>-->
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">

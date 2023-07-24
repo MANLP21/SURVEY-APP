@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,10 +9,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="profileList.length!==0;">
+  <div *ngIf="profileList.length!==0; else elseBlock">
     <ion-card *ngFor="let profile of profileList; let index">
       <ion-card-header>
         <ion-card-title>{{ profile.name }}</ion-card-title>
+        <div class="profile"></div>
+
         <ion-card-subtitle>Birthday: {{ profile.birthday }}</ion-card-subtitle>
         <ion-card-subtitle>Gender: {{ profile.gender }}</ion-card-subtitle>
         <ion-card-subtitle>Height: {{ profile.height? profile.height : 0 }} cm </ion-card-subtitle>
@@ -22,6 +24,23 @@
       </ion-card-header>
     </ion-card> 
   </div>
+    <ng-template #elseBlock>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>MONKITI Ayéfounin Nicaise</ion-card-title>
+            <div class="profile"></div>
+          
+          <ion-card-subtitle>Birthday: </ion-card-subtitle>
+          <ion-card-subtitle>Gender: </ion-card-subtitle>
+          <ion-card-subtitle>Height: 0 cm </ion-card-subtitle>
+          <ion-card-subtitle>Weight: 0 Kg</ion-card-subtitle>
+          <ion-card-subtitle>Email: </ion-card-subtitle>
+          <ion-card-subtitle>Phone Number: </ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ng-template>
+
+ 
   
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
@@ -35,7 +54,7 @@
     <ion-modal [isOpen]="isModalOpen">
       <ng-template>
         <ion-header>
-          <ion-toolbar>
+          <ion-toolbar class="custom-toolbar">
             <ion-title>My Profile</ion-title>
           </ion-toolbar>
         </ion-header>

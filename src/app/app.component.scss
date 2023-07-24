@@ -90,7 +90,7 @@ ion-menu.ios ion-item.selected ion-icon {
 
 ion-menu.ios ion-item ion-icon {
   font-size: 24px;
-  color: #73849a;
+  color: #d7d8da;
 }
 
 
@@ -110,4 +110,8 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+ion-img.logo{
+  height: 200px;
 }

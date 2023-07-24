@@ -1,0 +1,19 @@
+ion-title{
+    font-weight: 600;
+    color: white;
+}
+
+div.profile{
+    height: 130px;
+    width: 130px;
+    border: 5px solid var(--ion-color-primary) ;
+    border-radius: 50%;
+    background-image: url(../../../assets/icon/profile.jpeg);
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+
+.custom-toolbar {
+    --background: var(--ion-color-primary);
+}
