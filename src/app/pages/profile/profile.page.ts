@@ -21,7 +21,7 @@ export class ProfilePage implements OnInit {
     phone_number:""
   }
 
-  public isModalOpen :  boolean = false;
+  public isModalOpened :  boolean = false;
 
   constructor(private profileService :  ProfileService) { }
 
@@ -44,17 +44,17 @@ export class ProfilePage implements OnInit {
   
     
 
-    this.isModalOpen=true; 
+    this.isModalOpened=true; 
   }
 
   public cancel(){
-    this.isModalOpen=false; 
+    this.isModalOpened=false; 
   }
 
   public save(){
     this.profileService.saveProfile(this.currentProfile);
     this.loadProfile();
-    this.isModalOpen=false; 
+    this.isModalOpened=false; 
   }
 
 }
